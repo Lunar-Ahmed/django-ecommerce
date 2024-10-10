@@ -18,10 +18,10 @@
 
         <div class="products">
             <div class="card">
-                <a href="details/" style="text-decoration: none; color: black;">
+                <a onclick="window.location = 'details/{{ pdesid }}'" style="text-decoration: none; color: black;">
                     <div class="containers">
                         <img src="images/watch2.png" width="250" height="250">
-                        <h4>italian watch</h4>
+                        <h4>{{ pdes.name }}</h4>
                         <P>price:11060</P>
                         <P>units:4</P>
                     </div>
