@@ -5,7 +5,7 @@ from .models import Pdetail
 
 def main(request):
     mproducts = Pdetail.objects.all().values()
-    template = loader.get_template('index.html')
+    template = loader.get_template('products.html')
     context = {
         'mproducts' : mproducts
     }
