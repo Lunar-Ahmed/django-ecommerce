@@ -4,7 +4,11 @@ from django.template import loader
 from .models import Pdetail
 
 def main(request):
+    mproducts = Pdetail.objects.all().values()
     template = loader.get_template('index.html')
+    context = {
+        'mproducts' : mproducts
+    }
     return HttpResponse(template.render())
 
 def details(request):
