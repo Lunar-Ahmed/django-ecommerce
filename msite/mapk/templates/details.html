@@ -1,28 +1,14 @@
-{% load static %}
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>shopping site</title>
-    <link rel="stylesheet" href="{% static 'style.css' %}" type="text/css">
-</head>
+<html>
 <body>
-    <div class="container">
-        <div class="topnav">
-                <li class="jumbo">
-                    <a href="/">ADcad</a>
-        </div>
-    </div>
 
-        <div class="card">
-                    <img src="images/watch2.png" width="250" height="250">
-        </div>
-
-        <h2>{{pdes.pname}}</h2>
-        <h2>{{pdes.psize}}</h2>
-        <h2>{{pdes.punit}}</h2>
-        <h2>{{pdes.pdescription}}</h2>
+<h1>Members</h1>
+  
+<ul>
+  {% for x in mproducts %}
+    <li><a href="details/{{ x.id }}">{{ x.pname }} {{ x.description }}</a></li>
+  {% endfor %}
+</ul>
 
 </body>
 </html>
