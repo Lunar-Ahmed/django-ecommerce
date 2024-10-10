@@ -2,13 +2,9 @@
 <html>
 <body>
 
-<h1>Members</h1>
-  
-<ul>
-  {% for x in mproducts %}
-    <li><a href="details/{{ x.id }}">{{ x.pname }} {{ x.description }}</a></li>
-  {% endfor %}
-</ul>
+
+      <h1>{{ x.pname }} {{ x.pdescription }}</h1>
+
 
 </body>
 </html>
