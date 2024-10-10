@@ -9,7 +9,7 @@ def main(request):
     context = {
         'mproducts' : mproducts
     }
-    return HttpResponse(template.render())
+    return HttpResponse(template.render(context, request))
 
 def details(request):
     pdes = Pdetail.objects.get(id=id)
@@ -17,4 +17,4 @@ def details(request):
     context = {
         'pdes' : pdes
     }
-    return  HttpResponse(template.render())
+    return  HttpResponse(template.render(context, request))
