@@ -9,6 +9,7 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+    
 # class Pdetail(models.Model):
 #     pname = models.CharField(max_length=200)
 #     pprice = models.TextField(max_length=10, null=True)
