@@ -1,13 +1,16 @@
-<!DOCTYPE html>
-<html>
-<body>
+{% extends 'base_generic.html' %}
 
-<h1>Members</h1>
-  <ul>
-    {% for x in mproducts %}
-      <li><a href="details/{{ x.id }}">{{ x.pname }} {{ x.description }}</a></li>
+{% block content %}
+<h1>Product List</h1>
+<div class="product-grid">
+    {% for product in products %}
+        <div class="product-item">
+            <a href="{% url 'product_detail' product.pk %}">
+                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                <h2>{{ product.name }}</h2>
+            </a>
+            <p>{{ product.price }}</p>
+        </div>
     {% endfor %}
-  </ul>
-
-</body>
-</html>
+</div>
+{% endblock %}
