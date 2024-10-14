@@ -83,6 +83,21 @@ DATABASES = {
     }
 }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'mssql',
+#         'NAME': 'cads',
+#         'USER' : '',
+#         'PASSWORD': '',
+#         'HOST': 'localhost', 
+#         'PORT': '1433',
+#         'OPTIONS': {
+#             'driver':'ODBC Driver 17 for SQL Server',
+#             'Trusted_connection':'yes',
+#         }
+#     }
+# }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators

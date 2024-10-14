@@ -1,11 +1,11 @@
 {% extends "index.html" %}
 {% block content %}
 <h1>Product List</h1>
-<div class="product-grid">
+<div class="card">
     {% for product in products %}
-        <div class="product-item">
+        <div class="containers">
             <a href="{% url 'product_detail' product.pk %}">
-                <img src="{{ Product.image.url }}" alt="{{ product.name }}">
+                <img src="{{ products.image.url }}" alt="{{ product.name }}">
                 <h2>{{ product.name }}</h2>
             </a>
             <p>{{ product.price }}</p>

@@ -1,8 +1,17 @@
 {% extends "index.html" %}
 {% block content %}
-<h1>{{ product.name }}</h1>
-<img src="{{ Product.image.url }}" alt="{{ product.name }}">
-<p>{{ product.description }}</p>
-<p>Price: {{ product.price }}</p>
+<div class="card">
+    <div class="details">
+        <h1>{{ product.name }}</h1>
+        <img src="{{ Product.image.url }}" alt="{{ product.name }}">
+        <p>{{ product.description }}</p>
+        <p>Price: {{ product.price }}</p>
+
+        <a href="{% url 'register' %}">
+            <button type="submit">Buy Now</button>
+        </a>
+    </div>
+</div>
+
 {% endblock %}
 

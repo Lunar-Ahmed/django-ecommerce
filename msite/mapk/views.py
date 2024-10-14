@@ -1,8 +1,10 @@
 import os
 from django.core.files import File
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Product
-
+from .forms import RegistrationForm
+from django.contrib.auth import authenticate, login
+from .forms import Login
 
 
 def product_list(request):
@@ -19,6 +21,50 @@ def save_product_image(image_path, product_id):
         image_file = File(f)
         product = Product.objects.get(pk=product_id)
         product.image.save(os.path.basename(image_path), image_file, save=True)
+
+
+
+def reg(request):
+    if request.method == 'POST':
+        form = RegistrationForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.set_password(form.cleaned_data['password'])
+            user.save()
+            return redirect('login')  # Redirect after successful registration
+    else:
+        form = RegistrationForm()
+    return render(request, 'regform.html', {'form': form})
+
+
+def login(request):
+    if request.method == 'POST':
+        form = Login(request.POST)
+        if form.is_valid():
+            email = form.cleaned_data['email']
+            password = form.cleaned_data['password']
+            user = authenticate(request, username=email, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('/')  # Redirect to a success page
+            else:
+                form.add_error(None, 'Invalid username or password')
+    else:
+        form = LoginForm()
+    return render(request, 'login.html', {'form': form})
+
+
+# def reg(request):
+#     if request.method == 'POST':
+#         form = RegistrationForm(request.POST)
+#         if form.is_valid():
+#             user = form.save(commit=False)
+#             user.set_password(form.cleaned_data['password'])
+#             user.save()
+#             return redirect('success')
+#         else:
+#             form = RegistrationForm()
+#         return render(request, 'regform.html', {'form': form})
 
 # from django.http import HttpResponse
 # from django.template import loader
