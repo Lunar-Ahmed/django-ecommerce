@@ -50,7 +50,7 @@ def login(request):
             else:
                 form.add_error(None, 'Invalid username or password')
     else:
-        form = LoginForm()
+        form = Login()
     return render(request, 'login.html', {'form': form})
 
 

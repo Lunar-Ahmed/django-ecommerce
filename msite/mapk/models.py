@@ -10,6 +10,13 @@ class Product(models.Model):
     def __str__(self):
         return self.name
     
+class Pdetail(models.Model):
+    pname = models.CharField(max_length=200)
+    pprice = models.TextField(max_length=10, null=True)
+    psize = models.TextField(max_length=15)
+    punit = models.TextField(max_length=50)
+    pdescription = models.TextField(max_length=1000)
+        
 
 class Register(models.Model):
     name = models.CharField(max_length=200)
@@ -21,9 +28,4 @@ class Login(models.Model):
     email = models.EmailField(max_length=100)
     password = models.CharField(max_length=250)
     
-class Pdetail(models.Model):
-    pname = models.CharField(max_length=200)
-    pprice = models.TextField(max_length=10, null=True)
-    psize = models.TextField(max_length=15)
-    punit = models.TextField(max_length=50)
-    pdescription = models.TextField(max_length=1000)
+
