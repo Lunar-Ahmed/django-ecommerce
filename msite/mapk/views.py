@@ -2,7 +2,7 @@ import os
 from django.core.files import File
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Product
-from .forms import RegistrationForm
+from . forms import RegistrationForm
 from django.contrib.auth import authenticate, login
 from .forms import Login
 
@@ -25,14 +25,17 @@ def save_product_image(image_path, product_id):
 
 
 def reg(request):
+    form = RegistrationForm()
+     
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
-        if form.is_valid():
-            user = form.save(commit=False)
+        if form.is_valid(): 
+            form.save()
             return redirect('login')  # Redirect after successful registration
-    else:
-        form = RegistrationForm()
-    return render(request, 'regform.html', {'form': form})
+    context = {'registerform': form}
+    # else:
+    #     form = RegistrationForm()
+    return render(request, 'regform.html', context=context)# {'context': form})
 
 
 def login(request):
@@ -56,6 +59,7 @@ def login(request):
 #             user.set_password(form.cleaned_data['password'])
 #             user.save()
 
+            # user = form.save(commit=False)
 
 
 # def reg(request):
