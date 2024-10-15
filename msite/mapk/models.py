@@ -18,11 +18,11 @@ class Pdetail(models.Model):
     pdescription = models.TextField(max_length=1000)
         
 
-class Register(models.Model):
-    name = models.CharField(max_length=200)
-    phone = models.IntegerField()
-    email = models.EmailField(max_length=100)
-    password = models.CharField(max_length=250)
+# class Register(models.Model):
+#     name = models.CharField(max_length=200)
+#     phone = models.IntegerField()
+#     email = models.EmailField(max_length=100)
+#     password = models.CharField(max_length=250)
 
     def __str__(self):
         return self.name
