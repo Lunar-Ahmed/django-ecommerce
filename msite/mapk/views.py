@@ -14,6 +14,10 @@ def product_detail(request, pk):
     product = get_object_or_404(Product, pk=pk)
     return render(request, 'details.html', {'product': product})
 
+def payment(request, pk):
+    product = get_object_or_404(Product, pk=pk)
+    return render(request, 'pay.html', {'product': product})
+
 
 def save_product_image(image_path, product_id):
     with open(image_path, 'rb') as f:
@@ -41,16 +45,17 @@ def login(request):
     form = Login()
 
     if request.method == 'POST':
-        form = Login(request, data=request.POST)
+
+        form = Login(request.POST)
 
         if form.is_valid():
-            email = request.POST.get['email']
-            password = request.POST.get['password']
+            email =form.cleaned_data['email']
+            password = form.cleaned_data['password']
 
             user = authenticate(request, email=email, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('/')  # Redirect to a success page
+                return redirect('register')  # Redirect to a success page
             
     context = {'loginform':form }
 
