@@ -2,9 +2,8 @@ import os
 from django.core.files import File
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Product
-from . forms import RegistrationForm
+from . forms import RegistrationForm, Login
 from django.contrib.auth import authenticate, login
-from .forms import Login
 
 
 def product_list(request):
@@ -39,20 +38,44 @@ def reg(request):
 
 
 def login(request):
+    form = Login()
+
     if request.method == 'POST':
-        form = Login(request.POST)
+        form = Login(request, data=request.POST)
+
         if form.is_valid():
-            email = form.cleaned_data['email']
-            password = form.cleaned_data['password']
+            email = request.POST.get['email']
+            password = request.POST.get['password']
+
             user = authenticate(request, email=email, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('login')  # Redirect to a success page
-            else:   
-                form.add_error(None, 'Invalid email or password')
-    else:
-        form = Login()
-    return render(request, 'regform.html', {'form': form})
+                return redirect('/')  # Redirect to a success page
+            
+    context = {'loginform':form }
+
+    return render(request, 'login.html', context=context) #{'form': form})
+
+
+# def login(request):
+#     form = Login()
+
+#     if request.method == 'POST':
+#         form = Login(request.POST)
+#         if form.is_valid():
+#             email = form.cleaned_data['email']
+#             password = form.cleaned_data['password']
+#             user = authenticate(request, email=email, password=password)
+#             if user is not None:
+#                 login(request, user)
+#                 return redirect('login')  # Redirect to a success page
+#             else:   
+#                 form.add_error(None, 'Invalid email or password')
+#     else:
+#         form = Login()
+#     return render(request, 'regform.html', {'form': form})
+
+
 
 
 # ----------------------------------------

@@ -19,13 +19,13 @@ class Pdetail(models.Model):
         
 
 class Register(models.Model):
-    name = models.CharField(max_length=200)
+    username = models.CharField(max_length=200)
     phone = models.IntegerField()
     email = models.EmailField(max_length=100)
     password = models.CharField(max_length=250)
 
     def __str__(self):
-        return self.name
+        return self.username
 
 class Login(models.Model):
     email = models.EmailField(max_length=100)
