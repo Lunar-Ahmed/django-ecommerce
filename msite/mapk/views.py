@@ -41,12 +41,12 @@ def login(request):
         if form.is_valid():
             email = form.cleaned_data['email']
             password = form.cleaned_data['password']
-            user = authenticate(request, username=email, password=password)
+            user = authenticate(request, email=email, password=password)
             if user is not None:
                 login(request, user)
                 return redirect('login')  # Redirect to a success page
-            else:
-                form.add_error(None, 'Invalid username or password')
+            else:   
+                form.add_error(None, 'Invalid email or password')
     else:
         form = Login()
     return render(request, 'regform.html', {'form': form})
