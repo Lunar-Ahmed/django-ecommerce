@@ -29,8 +29,6 @@ def reg(request):
         form = RegistrationForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
-            user.set_password(form.cleaned_data['password'])
-            user.save()
             return redirect('login')  # Redirect after successful registration
     else:
         form = RegistrationForm()
@@ -46,12 +44,18 @@ def login(request):
             user = authenticate(request, username=email, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('/')  # Redirect to a success page
+                return redirect('login')  # Redirect to a success page
             else:
                 form.add_error(None, 'Invalid username or password')
     else:
         form = Login()
-    return render(request, 'login.html', {'form': form})
+    return render(request, 'regform.html', {'form': form})
+
+
+# ----------------------------------------
+#             user.set_password(form.cleaned_data['password'])
+#             user.save()
+
 
 
 # def reg(request):
