@@ -18,7 +18,7 @@ class Pdetail(models.Model):
     pdescription = models.TextField(max_length=1000)
         
 
-class Pdetail(models.Model):
+class Pay(models.Model):
     pname = models.CharField(max_length=200)
     pprice = models.TextField(max_length=10, null=True)
     psize = models.TextField(max_length=15)
