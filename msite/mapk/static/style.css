@@ -90,6 +90,15 @@ a{
     text-decoration: none;
 }
 
+.paydetail{
+    font-size: larger;
+}
+
+.payimage{
+    height: 200px;
+    width: 100px;
+}
+
 
 /* ul li{
     margin: 0;
