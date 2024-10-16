@@ -10,7 +10,11 @@ class RegistrationForm(forms.ModelForm):
         fields = ['username','phone','email', 'password']
         # password = forms.CharField(widget=forms.PasswordInput())
 
+class Login(forms.ModelForm):
+    class Meta:
+        model = Login
+        fields = ['email', 'password']
 
-class Login(forms.Form):
-    email = forms.EmailField(widget = forms.TextInput())
-    password = forms.CharField(widget=forms.PasswordInput())
+# class Login(forms.Form):
+#     email = forms.EmailField(widget = forms.TextInput())
+#     password = forms.CharField(widget=forms.PasswordInput())

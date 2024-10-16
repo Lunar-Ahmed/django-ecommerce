@@ -68,10 +68,14 @@ def login(request):
         if form.is_valid():
             email = form.cleaned_data['email']
             password = form.cleaned_data['password']
-            register = authenticate(request, email=email, password=password)
-            if register is not None:
-                login(request, register)
-                return redirect('payment')
+            login = authenticate(request, email=email, password=password)
+            if login is not None:
+                print(f"User authenticated: {login}")
+                login(request, login)
+                return redirect('product/<int:pk>/payment')
+            else:
+                print("Invalid login credentials")
+                form.add_error(None, 'Invalid email or password')
     context = {'loginform': form}
     return render(request, 'login.html', context=context)
 

@@ -82,7 +82,6 @@ button{
     float: inline-end;
     margin-top: 150px;
     box-sizing: border-box;
-    position: fixed;
 }
 button a {
     color: #ffffff;
