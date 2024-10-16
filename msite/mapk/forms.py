@@ -2,7 +2,7 @@ from django import forms
 from .models import Register, Login
 from django.forms.widgets import PasswordInput, TextInput
 # from django.contrib.auth.forms import UserCreationForm
-# from django.contrib.auth.models import User
+# from django.contrib.auth.models import Login
 
 class RegistrationForm(forms.ModelForm):
     class Meta:

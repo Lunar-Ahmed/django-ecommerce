@@ -2,7 +2,7 @@ import os
 from django.core.files import File
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Product
-from . forms import RegistrationForm, Login
+from .forms import RegistrationForm, Login
 from django.contrib.auth import authenticate, login
 
 
@@ -61,6 +61,7 @@ def reg(request):
 #     return render(request, 'login.html', context=context) #{'form': form})
 
 
+
 def login(request):
     form = Login()
     if request.method == 'POST':
@@ -68,14 +69,12 @@ def login(request):
         if form.is_valid():
             email = form.cleaned_data['email']
             password = form.cleaned_data['password']
-            login = authenticate(request, email=email, password=password)
-            if login is not None:
-                print(f"User authenticated: {login}")
-                login(request, login)
-                return redirect('product/<int:pk>/payment')
+            user = authenticate(request, email=email, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('product_list')
             else:
-                print("Invalid login credentials")
-                form.add_error(None, 'Invalid email or password')
+                form.add_error(None,'Invalid email or password')
     context = {'loginform': form}
     return render(request, 'login.html', context=context)
 
