@@ -2,15 +2,15 @@
 {% block content %}
 <div class="card">
     <div class="details">
-        <div class="payimage">
+        <div class="payimage" style="float: right; margin: 50px;">
             <img src="{{ Product.image.url }}" alt="{{ product.name }}">
         </div>
-        <div class="paydetail">
+        <div class="paydetail" style="margin-left: 50px; font-size: larger; box-sizing: border-box;">
             <h1>{{ product.name }}</h1>
-            <p>Price: {{ product.price }}</p>
-            <p>vat = 0</p>
-            <p>Delivery = Free</p>
-            <p>Total= </p>
+            <p>Price: {{ product.price }}, vat = 0</p>
+            <p>Delivery: Free</p>
+            <p>Delivery Date: before seven days from now</p>
+            <p style="font-size: x-large;">Total= {{product.price}}</p>
         </div>
 
         <a href="{% url 'register' %}">

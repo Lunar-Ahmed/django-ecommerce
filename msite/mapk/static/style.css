@@ -81,6 +81,7 @@ button{
     border-radius: 10px;
     float: inline-end;
     margin-top: 150px;
+    box-sizing: border-box;
 }
 button a {
     color: #ffffff;
@@ -90,13 +91,16 @@ a{
     text-decoration: none;
 }
 
-.paydetail{
+details .paydetail{
     font-size: larger;
+    float: right;
+    background-color: red;
 }
 
 .payimage{
     height: 200px;
     width: 100px;
+
 }
 
 

@@ -29,37 +29,51 @@ def save_product_image(image_path, product_id):
 
 def reg(request):
     form = RegistrationForm()
-     
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
         if form.is_valid(): 
             form.save()
-            return redirect('login')  # Redirect after successful registration
+            return redirect('login')
     context = {'registerform': form}
     # else:
     #     form = RegistrationForm()
     return render(request, 'regform.html', context=context)# {'context': form})
 
 
+# def login(request):
+#     form = Login()
+
+#     if request.method == 'POST':
+
+#         form = Login(request.POST)
+
+#         if form.is_valid():
+#             email =form.cleaned_data['email']
+#             password = form.cleaned_data['password']
+
+#             user = authenticate(request, email=email, password=password)
+#             if user is not None:
+#                 login(request, user)
+#                 return redirect('payment')
+            
+#     context = {'loginform':form }
+
+#     return render(request, 'login.html', context=context) #{'form': form})
+
+
 def login(request):
     form = Login()
-
     if request.method == 'POST':
-
         form = Login(request.POST)
-
         if form.is_valid():
-            email =form.cleaned_data['email']
+            email = form.cleaned_data['email']
             password = form.cleaned_data['password']
-
-            user = authenticate(request, email=email, password=password)
-            if user is not None:
-                login(request, user)
-                return redirect('register')  # Redirect to a success page
-            
-    context = {'loginform':form }
-
-    return render(request, 'login.html', context=context) #{'form': form})
+            register = authenticate(request, email=email, password=password)
+            if register is not None:
+                login(request, register)
+                return redirect('payment')
+    context = {'loginform': form}
+    return render(request, 'login.html', context=context)
 
 
 # def login(request):
