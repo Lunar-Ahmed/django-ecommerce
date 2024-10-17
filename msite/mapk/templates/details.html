@@ -2,10 +2,13 @@
 {% block content %}
 <div class="card">
     <div class="details">
-        <h1>{{ product.name }}</h1>
-        <img src="{{ product.image.url }}" alt="{{ product.name }}">
-        <p>{{ product.description }}</p>
-        <p>Price: {{ product.price }}</p>
+        <img src="{{ product.image.url }}" alt="{{ product.name }}" style="height: 250px; width: 245x;">
+        <img src="{{ product.image.url }}" alt="{{ product.name }}" style="height: 250px; width: 245x;">
+        <div class="pdetail">
+            <h1>{{ product.name }}</h1>
+            <p>{{ product.description }}</p>
+            <p>Price: {{ product.price }}</p>
+        </div>
 
         <a href="{% url 'register' %}">
             <button type="submit">Buy Now</button>
