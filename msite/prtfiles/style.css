@@ -91,11 +91,15 @@ a{
     text-decoration: none;
 }
 
-details .pydetail{
+/* details .paydetail{
     font-size: larger;
     float: right;
     background-color: red;
-}
+} */
+ img{
+    width: 295px;
+    height: 200px;
+ }
 
 
 /* ul li{

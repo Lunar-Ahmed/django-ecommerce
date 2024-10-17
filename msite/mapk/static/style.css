@@ -91,15 +91,66 @@ a{
     text-decoration: none;
 }
 
-details .paydetail{
+/* details .paydetail{
     font-size: larger;
     float: right;
     background-color: red;
-}
+} */
  img{
     width: 295px;
-    height: 250px;
+    height: 200px;
  }
+
+ /*----------------------------------------------------------*/
+ /* styles.css */
+/* body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+    margin: 0;
+    background-color: #f4f4f4;
+} */
+
+.carousel-container {
+    position: relative;
+    width: 20%;
+    max-width: 500px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-slide {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+/*---------------------------------------------*/
 
 
 /* ul li{
