@@ -2,9 +2,12 @@
 {% block content %}
 <div class="card">
     <div class="details">
-        <img src="{{ product.image.url }}" alt="{{ product.name }}" style="height: 250px; width: 245x;">
-        <img src="{{ product.image.url }}" alt="{{ product.name }}" style="height: 250px; width: 245x;">
-        <div class="pdetail">
+        <div class="pimg" style="box-sizing: border-box; float: left;">
+            <img src="{{ product.image.url }}" alt="{{ product.name }}" style="height: 250px; width: 245x;">
+            <img src="{{ product.image.url }}" alt="{{ product.name }}" style="height: 250px; width: 245x;">
+        </div>
+
+        <div class="pdetail" style="box-sizing: border-box; float: right;">
             <h1>{{ product.name }}</h1>
             <p>{{ product.description }}</p>
             <p>Price: {{ product.price }}</p>
