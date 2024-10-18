@@ -1,16 +1,16 @@
 {% extends "index.html" %}
 {% block content %}
-<h1>Product List</h1>
-<div class="card">
-    {% for product in products %}
-        <div class="containers">
-            <a href="{% url 'product_detail' product.pk %}">
-                <img src="{{ product.image.url }}" alt="{{ product.name }}" style="height: 250px; width: 200x;">
-                <h2>{{ product.name }}</h2>
-            </a>
-            <p>{{ product.price }}</p>
-        </div>
-    {% endfor %}
-</div>
+    <h1>Product List</h1>
+    <div class="card">
+        {% for product in products %}
+            <div class="containers">
+                <a href="{% url 'product_detail' product.pk %}">
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}" style=" height: 280px; width:260px; border-radius: 10px;" >
+                    <h2>{{ product.name }}</h2>
+                    <p>{{ product.price }}</p>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}
 
