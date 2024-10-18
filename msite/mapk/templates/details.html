@@ -3,22 +3,42 @@
 <div class="card">
     <div class="details">
         <div class="dimage" style="float: left; margin: 10px; box-sizing: border-box;">
-            <div class="carousel-container">
-                <div class="carousel-slide">
-                    <img src="{{ product.image.url }}" alt="Image 1">
-                    <img src="images/shirt1.jpg" alt="Image 2">
-                    <img src="{{ product.image.url }}" alt="Image 3">
-                    <img src="images/sneaker4.jpg" alt="">
+            <div class="carousel-container" style="  position: relative;  width: 35vw; height: 65vh;
+            max-width: 800px;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+
+                <div class="carousel-slide" style=" display: flex; transition: transform 0.5s ease-in-out; ">
+                    <img src="{{ product.image.url }}" alt="Image 1" style=" width: 100%; height: 80%; border-radius: 10px;">
+                    <img src="images/shirt1.jpg" alt="Image 2" style=" width: 100%; height: 80%; border-radius: 10px;">
+                    <img src="{{ product.image.url }}" alt="Image 3" style=" width: 100%; height: 80%; border-radius: 10px;">
+                    <img src="images/sneaker4.jpg" alt="" style=" width: 100%; height: 80%; border-radius: 10px;">
                 </div>
-                <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
-                <button class="next" onclick="moveSlide(1)">&#10095;</button>
+                <button class="prev" onclick="moveSlide(-1)" style="position: absolute;
+                top: 15%;
+                transform: translateY(-50%);
+                background-color: rgba(0, 0, 0, 0.5);
+                color: white;
+                border: none;
+                padding: 10px;
+                cursor: pointer; left: 10px;">&#10094;</button>
+
+                <button class="next" onclick="moveSlide(1)" style=" position: absolute;
+                top: 15%;
+                transform: translateY(-50%);
+                background-color: rgba(0, 0, 0, 0.5);
+                color: white;
+                border: none;
+                padding: 10px;
+                cursor: pointer; right: 10px;">&#10095;</button>
             </div>
             
             <!-- <img src="{{ product.image.url }}" alt="{{ product.name }}" style="height: 250px; width: 245x;">
             <img src="{{ product.image.url }}" alt="{{ product.name }}" style="height: 250px; width: 245x;"> -->
         </div>
 
-        <div class="dinfo" style="float: right; margin: 10px; box-sizing: border-box; width: 500px; height: fit-content;">
+        <div class="dinfo" style="float: right; margin: 10px; box-sizing: border-box; width: 600px; height: fit-content;">
             <h1>{{ product.name }}</h1>
             <p>{{ product.description }}</p>
             <p>Price: {{ product.price }}</p>
@@ -29,6 +49,31 @@
         </a>
     </div>
 </div>
+
+<script>
+    let slideIndex = 0;
+showSlides(slideIndex);
+
+function moveSlide(n) {
+    showSlides(slideIndex += n);
+}
+
+function showSlides(n) {
+    let slides = document.querySelectorAll('.carousel-slide img');
+    if (n >= slides.length) {
+        slideIndex = 0;
+    }
+    if (n < 0) {
+        slideIndex = slides.length - 1;
+    }
+    slides.forEach((slide, index) => {
+        slide.style.display = 'none';
+        if (index === slideIndex) {
+            slide.style.display = 'block';
+        }
+    });
+}
+</script>
 
 {% endblock %}
 
